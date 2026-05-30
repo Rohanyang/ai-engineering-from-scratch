@@ -18,3 +18,21 @@ Google Colab will be used for:
 
 Reason:
 My laptop is not ideal for local CUDA setup or model training, and Colab provides a working Tesla T4 GPU without affecting local performance.
+My Colab GPU is Tesla T4 with about 15GB VRAM.
+
+Using the fp16 rule of thumb:
+1 parameter ≈ 2 bytes
+
+15GB / 2 bytes ≈ 7.5B parameters
+
+So in theory, this GPU can fit around a 7B fp16 model's weights.
+In practice, because inference also needs memory for activations, KV cache, and framework overhead, a safer estimate is smaller than 7B for fp16, or around 7B if using quantization such as 4-bit.
+My Colab GPU is Tesla T4 with about 15GB VRAM.
+
+Using the fp16 rule of thumb:
+1 parameter ≈ 2 bytes
+
+15GB / 2 bytes ≈ 7.5B parameters
+
+So in theory, this GPU can fit around a 7B fp16 model's weights.
+In practice, because inference also needs memory for activations, KV cache, and framework overhead, a safer estimate is smaller than 7B for fp16, or around 7B if using quantization such as 4-bit.
